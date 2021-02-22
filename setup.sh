@@ -8,7 +8,7 @@ root_dir=`pwd`
 share_dir='/usr/share/vim'
 
 exe_cmd "cp -f $root_dir/files/_vimrc $share_dir/_vimrc"
-exe_cmd "cp -rf $root_dir/files/vimfiles $share_dir/vimfiles"
+exe_cmd "cp -rf $root_dir/files/vimfiles $share_dir/"
 exe_cmd "ln -sf $share_dir/_vimrc $HOME/.vimrc"
 exe_cmd "ln -sf $share_dir/vimfiles $HOME/.vim"
 
