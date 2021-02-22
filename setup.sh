@@ -5,24 +5,13 @@ function exe_cmd() {
 }
 
 root_dir=`pwd`
+share_dir='/usr/share/vim'
 
-vim_alias_dir=$HOME/.vim
-vim_rc=$HOME/.vimrc
-d=`date +%Y%m%d-%H%M%S`
+exe_cmd "cp -f $root_dir/files/_vimrc $share_dir/_vimrc"
+exe_cmd "cp -rf $root_dir/files/vimfiles $share_dir/vimfiles"
+exe_cmd "ln -sf $share_dir/_vimrc $HOME/.vimrc"
+exe_cmd "ln -sf $share_dir/vimfiles $HOME/.vim"
 
-if [ -e $vim_alias_dir ]; then
-    exe_cmd "cp -R  $vim_alias_dir  $HOME/vim_${d}"
-    exe_cmd "rm -r $vim_alias_dir"
-fi 
-
-if [ -e $vim_rc ]; then
-    exe_cmd "mv $vim_rc  $HOME/vimrc_${d}"
-fi
-
-exe_cmd "ln -sf $root_dir/files/vimfiles  $vim_alias_dir"
-exe_cmd "ln -sf $root_dir/files/_vimrc $vim_rc"
-exe_cmd "cp -f files/_vimrc /usr/share/vim/_vimrc"
-
-exe_cmd 'git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
+exe_cmd "git clone https://github.com/VundleVim/Vundle.vim.git $share_dir/bundle/Vundle.vim"
 exe_cmd 'echo | vim +PluginInstall +qall'
 
