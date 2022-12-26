@@ -1,49 +1,36 @@
-# Work with vim anywhere. #
+# vim_anywhere
 
-## install ##
+## Requirement
+`vim version >= 8.0`
 
-### linux ###
+## Install
 
-Execute the `setup.sh`
+backup yourself configuration before install
 
-    bash setup.sh
+### Linux
+#### Generic system
+`install ctags`
+```shell
+bash setup.sh
+```
 
-### windows ###
+#### CentOS 7
+```shell
+dnf remove -y vim vim-minimal
+dnf copr enable -y hnakamur/vim
+dnf install -y vim
 
-You may need to install GVIM in your system first.
+dnf install -y ctags
+bash setup.sh
+```
 
-After install, copy all the files in the directory `files` to the `$HOME` directory.
+### MacOS
+```shell
+brew install -y ctags
+bash setup.sh
+```
 
-If you dont know what is the `$HOME` directory, open GVIM, type the command below:
-
-    :ehco $HOME
-
-It will output something like:
-
-    C:\Users\srain\     // This is the $HOME
-
-####TODO
-
-**It's done now, ctag will be install on different platforms**
-
-In mac, should replace the [`Exuberant CTags`](http://www.scholarslab.org/research-and-development/code-spelunking-with-ctags-and-vim/)
-
-    brew install ctags
-
-In Minimum Installation CentOS
-
-    sudo yum install -y ctags
-
-In Ubuntu
-
-    sudo apt-get install exuberant-ctags
-
-### Usage
-
-|keys| usage|
-|---|---|
-|`ctrl + p` | CtrlP |
-|`wm`       | toggle left window|
-|`,f`       |   go to first window  |
-|`,sp`      | :set paste            |
-|`,snp`     |  `:set nopaste`       |
+## Backup
+```shell
+bash backup.sh
+```

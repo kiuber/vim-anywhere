@@ -1,17 +1,22 @@
 #!/bin/bash
+set -e
+
 function exe_cmd() {
     echo $1
     eval $1
 }
 
-root_dir=`pwd`
-share_dir='/usr/share/vim'
+script_path=$(realpath "$0")
+script_dir=$(dirname "$script_path")
 
-exe_cmd "cp -f $root_dir/files/_vimrc $share_dir/_vimrc"
-exe_cmd "cp -rf $root_dir/files/vimfiles $share_dir/"
-exe_cmd "ln -sf $share_dir/_vimrc $HOME/.vimrc"
-exe_cmd "ln -sf $share_dir/vimfiles $HOME/.vim"
+share_dir='/opt/usr/share/vim/vim_anywhere'
 
-exe_cmd "git clone https://github.com/VundleVim/Vundle.vim.git --depth=1 $share_dir/bundle/Vundle.vim"
-exe_cmd 'echo | vim +PluginInstall +qall'
+exe_cmd "rm -rf $share_dir"
+exe_cmd "mkdir -p $share_dir"
 
+exe_cmd "cp -rf $script_dir/files/. $share_dir/"
+exe_cmd "ln -sf $share_dir/.vimrc $HOME/.vimrc"
+exe_cmd "ln -sfn $share_dir/.vim $HOME/.vim"
+exe_cmd "ls -alh $HOME/.vim*"
+
+exe_cmd "chmod -R 777 $share_dir/.vim"
