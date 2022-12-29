@@ -28,6 +28,7 @@ autocmd VimEnter * TagbarOpen
 autocmd VimEnter * wincmd p
 
 map <C-n> :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeFind<CR>
 map <C-u> :TagbarToggle<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
