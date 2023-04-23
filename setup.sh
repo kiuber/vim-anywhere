@@ -9,7 +9,7 @@ function exe_cmd() {
 script_path=$(realpath "$0")
 script_dir=$(dirname "$script_path")
 
-share_dir='/opt/usr/share/vim/vim-anywhere'
+share_dir='/opt/local/usr/share/vim/vim-anywhere'
 
 exe_cmd "rm -rf $share_dir"
 exe_cmd "mkdir -p $share_dir"
