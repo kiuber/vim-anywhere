@@ -1,4 +1,4 @@
-# vim_anywhere
+# vim-anywhere
 
 ## Requirement
 `vim version >= 8.0`
