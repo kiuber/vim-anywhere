@@ -17,6 +17,7 @@ bash setup.sh
 #### CentOS 7
 ```shell
 dnf remove -y vim vim-minimal
+dnf install 'dnf-command(copr)'
 dnf copr enable -y hnakamur/vim
 dnf install -y vim
 
